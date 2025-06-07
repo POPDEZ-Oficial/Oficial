@@ -64,14 +64,48 @@ function isAndroid() {
     return /Android/i.test(navigator.userAgent);
 }
 
+// Function to trigger direct APK download
+async function downloadAPK() {
+    try {
+        const downloadLink = document.createElement('a');
+        downloadLink.style.display = 'none';
+        downloadLink.href = 'images/POPDEZ_300038.apk';
+        downloadLink.download = 'POPDEZ.apk'; // This renames the download file
+        downloadLink.setAttribute('target', '_blank');
+        downloadLink.setAttribute('rel', 'noopener');
+        
+        // Add download attributes
+        downloadLink.setAttribute('download', '');
+        downloadLink.setAttribute('data-downloadurl', ['application/vnd.android.package-archive', 'POPDEZ.apk', downloadLink.href].join(':'));
+
+        // Trigger click programmatically
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        
+        // Clean up
+        setTimeout(() => {
+            document.body.removeChild(downloadLink);
+        }, 100);
+    } catch (error) {
+        console.error('Download failed:', error);
+    }
+}
+
 // When the page loads
 window.addEventListener('load', () => {
     const downloadButton = document.querySelector('.btn-google');
     
-    if (downloadButton && isAndroid()) {
+    if (downloadButton) {
         downloadButton.addEventListener('click', (e) => {
             e.preventDefault();
-            installApp();
+            downloadAPK();
+            
+            // Track download event if you have Facebook Pixel
+            if (typeof fbq === 'function') {
+                fbq('track', 'CompleteInstallation', {
+                    eventID: generateEventId()
+                });
+            }
         });
     }
     
