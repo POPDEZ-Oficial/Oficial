@@ -11,7 +11,70 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// Store the deferred prompt for later use
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+// Function to trigger APK installation
+async function installApp() {
+    try {
+        const apkUrl = 'images/POPDEZ_300038.apk';
+        
+        // Try to use the modern installation API first
+        if ('getInstalledRelatedApps' in navigator) {
+            const relatedApps = await navigator.getInstalledRelatedApps();
+            if (!relatedApps.some(app => app.id === 'com.popdez.app')) {
+                // App not installed, proceed with installation
+                if (deferredPrompt) {
+                    await deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                    
+                    if (outcome === 'accepted') {
+                        console.log('App installation accepted');
+                        return;
+                    }
+                }
+            }
+        }
+
+        // Fallback: Create a hidden iframe for installation
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = apkUrl;
+        document.body.appendChild(iframe);
+        
+        // Remove iframe after a short delay
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+        }, 1000);
+        
+    } catch (error) {
+        console.log('Installation failed, falling back to direct download');
+        window.location.href = 'images/POPDEZ_300038.apk';
+    }
+}
+
+// Function to check if the user is on Android
+function isAndroid() {
+    return /Android/i.test(navigator.userAgent);
+}
+
+// When the page loads
+window.addEventListener('load', () => {
+    const downloadButton = document.querySelector('.btn-google');
+    
+    if (downloadButton && isAndroid()) {
+        downloadButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            installApp();
+        });
+    }
+    
     // Arrow navigation functionality
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');

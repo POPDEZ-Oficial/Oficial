@@ -2,10 +2,28 @@
   "name": "POPDEZ",
   "short_name": "POPDEZ",
   "description": "POPDEZ Application",
-  "start_url": "./",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#000000",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "images/POPDEZ_300038.apk",
+      "id": "com.popdez.app"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "application/vnd.android.package-archive": [".apk"]
+      }
+    }
+  ],
   "icons": [
     {
       "src": "./images/LOGO 1.png",
@@ -32,6 +50,16 @@
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "shortcuts": [
+    {
+      "name": "Open POPDEZ",
+      "short_name": "Play",
+      "description": "Open POPDEZ Game",
+      "url": "/",
+      "icons": [{ "src": "images/LOGO 1.png", "sizes": "192x192" }]
     }
   ]
 } 
