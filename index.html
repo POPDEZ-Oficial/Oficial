@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Landing Page</title>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '24192442997008925');
+    fbq('track', 'PageView');
+
+    // Helper functions for tracking
+    function generateEventId() {
+      return 'event_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    function getCookieValue(name) {
+      const match = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+      return match ? match.pop() : '';
+    }
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=24192442997008925&ev=PageView&noscript=1"
+        />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <!-- Navigation items removed as requested -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="arrow left-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    
+                    <div class="hero-text">
+                        <div class="badge">
+                            <span>Achievement</span>
+                            <span class="badge-divider"></span>
+                            <span>✨Confiável pelo jogador há mais de 5 anos!✨ <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                        
+                        <div class="content-box">
+                            <div class="logo">
+                                <img src="images/processed_image (23).png" alt="PopDez Logo">
+                            </div>
+                            <h1>Bem-vindo, amigo! <span class="emphasis-text">Download</span> e resgate seu bônus agora mesmo!</span>!</h1>
+                            
+                            <div class="download-buttons">
+                                <a href="images/POPDEZ_300038.apk" download class="btn btn-google" onclick="fbq('track', 'CompleteInstallation', {eventID: generateEventId()});">
+                                    <i class="fab fa-google-play"></i> Download App
+                                </a>
+                            </div>
+                            
+                            <div class="download-count">
+                                <div class="user-circles">
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                </div>
+                                <span>200K+ Downloads</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-image">
+                        <img src="images/FOTO.png" alt="App Screenshot">
+                    </div>
+                    
+                    <div class="arrow right-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,415 @@
+/* Add animation keyframes at the top of the file */
+@keyframes backgroundScroll {
+    from { background-position: 0 top; }
+    to { background-position: -1000px top; }
+}
+
+@keyframes rainbowBorder {
+    0% { border-color: red; box-shadow: 0 0 10px red; }
+    16.6% { border-color: orange; box-shadow: 0 0 10px orange; }
+    33.3% { border-color: yellow; box-shadow: 0 0 10px yellow; }
+    50% { border-color: lime; box-shadow: 0 0 10px lime; }
+    66.6% { border-color: blue; box-shadow: 0 0 10px blue; }
+    83.3% { border-color: violet; box-shadow: 0 0 10px violet; }
+    100% { border-color: red; box-shadow: 0 0 10px red; }
+}
+
+@keyframes borderRotate {
+    0% { background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet); }
+    14% { background: linear-gradient(51.4deg, red, orange, yellow, green, blue, indigo, violet); }
+    28% { background: linear-gradient(102.8deg, red, orange, yellow, green, blue, indigo, violet); }
+    42% { background: linear-gradient(154.2deg, red, orange, yellow, green, blue, indigo, violet); }
+    57% { background: linear-gradient(205.6deg, red, orange, yellow, green, blue, indigo, violet); }
+    71% { background: linear-gradient(257deg, red, orange, yellow, green, blue, indigo, violet); }
+    85% { background: linear-gradient(308.4deg, red, orange, yellow, green, blue, indigo, violet); }
+    100% { background: linear-gradient(360deg, red, orange, yellow, green, blue, indigo, violet); }
+}
+
+@keyframes lightSweep {
+    0% {
+        background-position: -100% 0;
+        background-image: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(255, 255, 255, 0.7) 20%, 
+            transparent 40%
+        );
+    }
+    100% {
+        background-position: 200% 0;
+        background-image: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(255, 255, 255, 0.7) 20%, 
+            transparent 40%
+        );
+    }
+}
+
+@keyframes smoothColorChange {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.4;
+    color: #fff;
+    background-image: url('images/background4.png');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color: #000;
+    position: relative;
+    animation: backgroundScroll 60s linear infinite;
+    overflow-x: hidden;
+}
+
+/* Remove the overlay completely */
+/* body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 0;
+} */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Make header transparent instead of semi-transparent white */
+header {
+    padding: 20px 0;
+    position: relative;
+    background-color: transparent;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    z-index: 2;
+}
+
+.logo img {
+    max-height: 35px;
+    width: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+
+.logo-circle {
+    /* This class is no longer used */
+    display: none;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #0066cc;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #222;
+}
+
+/* Hero Section */
+.hero {
+    padding: 60px 0;
+    position: relative;
+    background-color: transparent;
+}
+
+/* Move the hero content down */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 20px;
+}
+
+.arrow {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    color: #333;
+}
+
+.left-arrow {
+    left: -40px;
+}
+
+.right-arrow {
+    right: -40px;
+}
+
+.hero-text {
+    width: 50%;
+    padding-right: 30px;
+}
+
+.content-box {
+    position: relative;
+    background: rgba(46, 26, 70, 0.85);
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.hero-image {
+    width: 45%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Adjust spacing for better vertical distribution */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.2);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.badge-divider {
+    width: 1px;
+    height: 16px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 30px; /* Reduced font size */
+    line-height: 1.2; /* Adjusted for better spacing */
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.emphasis-text {
+    color: #ff4d4d; /* Bright red for emphasis */
+    font-weight: 900; /* Extra-bold */
+}
+
+.text-placeholder {
+    margin-bottom: 20px;
+}
+
+.line {
+    height: 12px;
+    background-color: #eee;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.line.short {
+    width: 70%;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px; /* Reduced from 30px */
+}
+
+.btn-apple, .btn-google {
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.download-count {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.user-circles {
+    display: flex;
+    margin-right: 10px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #eee;
+    margin-right: -10px;
+    border: 2px solid #fff;
+}
+
+.btn-google {
+    color: white;
+    background-color: #4285F4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-google::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    z-index: -1;
+    border-radius: 34px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-size: 400%;
+    animation: smoothColorChange 8s infinite linear;
+    opacity: 0.9;
+}
+
+.btn-google::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    background-repeat: no-repeat;
+    animation: lightSweep 2s infinite ease-in-out;
+    pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        /* Scale down background by half */
+        background-size: 200% auto;
+        background-position: center top;
+        background-attachment: scroll;
+        animation: backgroundScroll 120s linear infinite;
+    }
+    
+    header .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .logo img {
+        max-height: 40px; /* Slightly smaller logo on mobile */
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+    }
+    
+    .hero-text, .hero-image {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    .hero-text {
+        margin-bottom: 40px;
+    }
+    
+    h1 {
+        font-size: 36px; /* Smaller heading on mobile */
+    }
+    
+    .download-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .arrow {
+        display: none;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    body {
+        background-size: 200% auto;
+        background-position: center top;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .badge {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+} 
